@@ -6,24 +6,17 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import Home from './pages/Home';
 import Cart from './pages/Cart';
+import Header from './components/Header';
 
 const Stack = createStackNavigator();
-
-function Teste() {
-  return (
-    <View>
-      <Text>Hello World</Text>
-    </View>
-  );
-}
 
 function Routes() {
   return (
     <NavigationContainer>
       <Stack.Navigator
         initialRouteName="Home"
-        headerMode="screen"
-        screenOptions={{ header: () => <Teste /> }}
+        headerMode="float"
+        screenOptions={{ header: props => <Header {...props} /> }}
       >
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Cart" component={Cart} />
