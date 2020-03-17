@@ -3,9 +3,7 @@
  * https://github.com/facebook/react-native
  *
  * @format
- */
-
-module.exports = {
+ */ module.exports = {
   transformer: {
     getTransformOptions: async () => ({
       transform: {
