@@ -1,7 +1,5 @@
 import styled from 'styled-components/native';
 
-import { RectButton } from 'react-native-gesture-handler';
-
 export const Wrapper = styled.View`
   background-color: #fff;
   width: 160px;

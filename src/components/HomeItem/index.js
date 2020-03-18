@@ -5,7 +5,6 @@ import { Container, AddButton, Title, Price } from './styles';
 
 export default function Header({ product }) {
   return (
-    // <Wrapper>
     <Container>
       <Image
         source={{
@@ -16,9 +15,8 @@ export default function Header({ product }) {
       <Title>{product.title}</Title>
       <Price>{product.priceFormatted}</Price>
       <AddButton>
-        <Text style={{ color: '#fff', fontSize: 17 }}>ADICIONAR</Text>
+        <Text style={{ color: '#fff', fontSize: 16 }}>ADICIONAR</Text>
       </AddButton>
     </Container>
-    // </Wrapper>
   );
 }
