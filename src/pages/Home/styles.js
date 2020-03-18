@@ -6,6 +6,7 @@ export const Container = styled.View`
   padding: 5px;
 `;
 
-export const Texto = styled.Text`
-  color: #fff;
-`;
+export const List = styled.FlatList.attrs({
+  horizontal: true,
+  showsHorizontalScrollIndicator: false,
+})``;

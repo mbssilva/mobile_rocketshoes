@@ -6,7 +6,7 @@ import formatPrice from '../../utils/format';
 
 import HomeItem from '../../components/HomeItem';
 
-import { Container, Texto } from './styles';
+import { Container, List } from './styles';
 
 class Home extends Component {
   constructor(props) {
@@ -33,11 +33,11 @@ class Home extends Component {
 
     return (
       <Container>
-        {products.map(product => (
-          <HomeItem key={product.id} product={product} />
-        ))}
-        {/* <HomeItem /> */}
-        <Texto>Hello Home</Texto>
+        <List
+          data={products}
+          keyExtractor={product => product.id}
+          renderItem={({ item }) => <HomeItem product={item} />}
+        />
       </Container>
     );
   }

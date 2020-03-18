@@ -1,22 +1,24 @@
 import React from 'react';
-import { TouchableOpacity, Image } from 'react-native';
+import { Image, Text } from 'react-native';
 
 import { Container, AddButton, Title, Price } from './styles';
 
 export default function Header({ product }) {
   return (
+    // <Wrapper>
     <Container>
       <Image
         source={{
-          uri:
-            'https://rocketseat-cdn.s3-sa-east-1.amazonaws.com/modulo-redux/tenis1.jpg',
+          uri: product.image,
         }}
-        style={{ width: 50, height: 50 }}
+        style={{ width: 105, height: 105, marginTop: 5 }}
       />
-      <Title>Tênis de Caminhada Leve Confortável</Title>
+      <Title>{product.title}</Title>
       <Price>{product.priceFormatted}</Price>
-      {/* <Price>R$ 139,90</Price> */}
-      <AddButton title="teste" />
+      <AddButton>
+        <Text style={{ color: '#fff', fontSize: 17 }}>ADICIONAR</Text>
+      </AddButton>
     </Container>
+    // </Wrapper>
   );
 }
