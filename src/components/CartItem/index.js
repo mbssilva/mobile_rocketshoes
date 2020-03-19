@@ -9,11 +9,16 @@ import {
   ProductPrice,
   Trash,
   TrashContainer,
+  ProductControlButton,
+  MinusButton,
+  PlusButton,
+  ProductAmountBox,
+  ProductSubTotalBox,
 } from './styles';
 
 export default function Header() {
   return (
-    <View style={{ backgroundColor: 'red' }}>
+    <View>
       <Wrapper>
         <Image
           source={{
@@ -46,7 +51,18 @@ export default function Header() {
       </Wrapper>
 
       <AmountAndPrice>
-        <Text>This is an amount component</Text>
+        <ProductControlButton>
+          <MinusButton />
+        </ProductControlButton>
+        <ProductAmountBox value="2" />
+        <ProductControlButton>
+          <PlusButton />
+        </ProductControlButton>
+        <ProductSubTotalBox>
+          <Text style={{ fontWeight: 'bold', fontSize: 20, color: '#7159c1' }}>
+            R$ 174,00
+          </Text>
+        </ProductSubTotalBox>
       </AmountAndPrice>
     </View>
   );
