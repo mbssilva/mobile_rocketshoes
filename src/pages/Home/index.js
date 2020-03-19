@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Reactotron from 'reactotron-react-native';
+import '../../config/ReactotronConfig';
 
 import api from '../../services/api';
 import formatPrice from '../../utils/format';
@@ -7,8 +8,6 @@ import formatPrice from '../../utils/format';
 import HomeItem from '../../components/HomeItem';
 
 import { Container, List } from './styles';
-
-import '../../config/ReactotronConfig';
 
 class Home extends Component {
   constructor(props) {
@@ -31,7 +30,7 @@ class Home extends Component {
   }
 
   render() {
-    Reactotron.warn('hello rendering world');
+    Reactotron.warn('teste');
 
     const { products } = this.state;
 

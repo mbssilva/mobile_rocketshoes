@@ -16,7 +16,7 @@ import {
   ProductSubTotalBox,
 } from './styles';
 
-export default function Header() {
+export default function CartItem() {
   return (
     <View>
       <Wrapper>
@@ -37,7 +37,7 @@ export default function Header() {
             <Text
               numberOfLines={3}
               style={{
-                fontSize: 17,
+                fontSize: 18,
                 fontWeight: 'bold',
               }}
             >
@@ -59,9 +59,7 @@ export default function Header() {
           <PlusButton />
         </ProductControlButton>
         <ProductSubTotalBox>
-          <Text style={{ fontWeight: 'bold', fontSize: 20, color: '#7159c1' }}>
-            R$ 174,00
-          </Text>
+          <Text style={{ fontWeight: 'bold', fontSize: 20 }}>R$ 174,00</Text>
         </ProductSubTotalBox>
       </AmountAndPrice>
     </View>

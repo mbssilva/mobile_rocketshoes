@@ -1,9 +1,17 @@
 import React from 'react';
 import { Image, Text } from 'react-native';
+import { connect } from 'react-redux';
 
 import { Container, AddButton, Title, Price } from './styles';
 
-export default function Header({ product }) {
+function HomeItem({ product, dispatch }) {
+  function handleAddProduct() {
+    dispatch({
+      type: 'ADD_TO_CART',
+      product,
+    });
+  }
+
   return (
     <Container>
       <Image
@@ -14,9 +22,16 @@ export default function Header({ product }) {
       />
       <Title>{product.title}</Title>
       <Price>{product.priceFormatted}</Price>
-      <AddButton>
+      <AddButton
+        type="button"
+        onPress={() => {
+          handleAddProduct();
+        }}
+      >
         <Text style={{ color: '#fff', fontSize: 16 }}>ADICIONAR</Text>
       </AddButton>
     </Container>
   );
 }
+
+export default connect()(HomeItem);

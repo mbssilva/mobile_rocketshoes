@@ -46,7 +46,7 @@ export const TrashContainer = styled.TouchableOpacity`
 
 export const AmountAndPrice = styled.View`
   flex-direction: row;
-  margin: 0 20px;
+  margin: 0 22px 12px;
   padding: 1px;
   border-bottom-right-radius: 8px;
   border-bottom-left-radius: 8px;
@@ -78,7 +78,7 @@ export const ProductAmountBox = styled.TextInput.attrs({
 })`
   background-color: #fff;
   height: 30px;
-  width: 40px;
+  width: 42px;
   padding: 0;
   text-align: center;
   border: 2px solid #ccc;

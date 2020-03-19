@@ -1,7 +1,11 @@
 import { createStore } from 'redux';
 
-import cart from './modules/cart/reducer';
+import reactotron from '../config/ReactotronConfig';
 
-const store = createStore(cart);
+import rootReducer from './modules/rootReducer';
+
+const enhancer = __DEV__ ? reactotron.createEnhancer() : null;
+
+const store = createStore(rootReducer, enhancer);
 
 export default store;

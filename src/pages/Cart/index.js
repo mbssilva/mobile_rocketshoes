@@ -1,11 +1,10 @@
 import React from 'react';
-import { Text } from 'react-native';
 
 import CartItem from '../../components/CartItem';
 
 import { Container, List } from './styles';
 
-function Cart() {
+function Cart(props) {
   return (
     <Container>
       <List
@@ -14,7 +13,7 @@ function Cart() {
           { id: '2', nome: 'Teste' },
         ]}
         keyExtractor={item => String(item.id)}
-        renderItem={({ item }) => <CartItem product={item} />}
+        renderItem={({ item }) => <CartItem product={item} {...props} />}
       />
     </Container>
   );
