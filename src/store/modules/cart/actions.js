@@ -12,6 +12,14 @@ export function addToCartSuccess(product) {
   };
 }
 
+export function updateAmountRequest(id, newAmount) {
+  return {
+    type: '@cart/UPDATE_REQUEST',
+    id,
+    newAmount,
+  };
+}
+
 export function updateAmountSuccess(id, newAmount) {
   return {
     type: '@cart/UPDATE_SUCCESS',

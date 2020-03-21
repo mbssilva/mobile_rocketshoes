@@ -7,11 +7,13 @@ function cart(state = [], action) {
 
     case actions.updateAmountSuccess().type: {
       const { id, newAmount } = action;
-      const data = state.map(product => {
-        if (id === product.id) product.amount = newAmount;
-      });
 
-      return data;
+      for (let i = 0; i < state.length; i += 1) {
+        // eslint-disable-next-line no-param-reassign
+        if (state[i].id === id) state[i].amount = newAmount;
+      }
+
+      return state;
     }
 
     default:
