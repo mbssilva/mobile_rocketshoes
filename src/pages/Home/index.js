@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Reactotron from 'reactotron-react-native';
 import '../../config/ReactotronConfig';
 
 import api from '../../services/api';
@@ -30,8 +29,6 @@ class Home extends Component {
   }
 
   render() {
-    Reactotron.warn('teste');
-
     const { products } = this.state;
 
     return (

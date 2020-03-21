@@ -11,7 +11,7 @@ function Cart({ cart }) {
       <List
         data={cart}
         keyExtractor={item => String(item.id)}
-        renderItem={({ item }) => <CartItem product={item} />}
+        renderItem={({ item }) => <CartItem productToRender={item} />}
       />
     </Container>
   );

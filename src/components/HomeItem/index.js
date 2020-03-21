@@ -4,12 +4,11 @@ import { connect } from 'react-redux';
 
 import { Container, AddButton, Title, Price } from './styles';
 
+import { addToCartRequest } from '../../store/modules/cart/actions';
+
 function HomeItem({ product, dispatch }) {
   function handleAddProduct() {
-    dispatch({
-      type: '@cart/ADD_REQUEST',
-      id: product.id,
-    });
+    dispatch(addToCartRequest(product.id));
   }
 
   return (

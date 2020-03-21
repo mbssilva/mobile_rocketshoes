@@ -54,13 +54,16 @@ export const AmountAndPrice = styled.View`
   align-items: center;
 `;
 
-export const ProductControlButton = styled.View`
+export const ProductControlButton = styled.TouchableOpacity`
   padding: 2px;
+  width: 35px;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const MinusButton = styled(Icon).attrs({
   name: 'remove-circle-outline',
-  size: 25,
+  size: 27,
   color: '#7159c1',
 })`
   margin-left: 5px;
@@ -68,7 +71,7 @@ export const MinusButton = styled(Icon).attrs({
 
 export const PlusButton = styled(Icon).attrs({
   name: 'add-circle-outline',
-  size: 25,
+  size: 27,
   color: '#7159c1',
 })``;
 

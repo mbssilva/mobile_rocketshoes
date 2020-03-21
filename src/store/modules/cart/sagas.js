@@ -26,5 +26,19 @@ function* addToCart({ id }) {
   }
 }
 
-// export default all([takeLatest('@cart/ADD_REQUEST', addToCart)]);
-export default all([takeLatest('@cart/ADD_REQUEST', addToCart)]);
+function* updateAmount({ id, newAmount }) {
+  const product = yield select(state => state.cart.find(p => p.id === id));
+
+  const currentAmount = product.amount;
+
+  if (newAmount <= 0) {
+    yield put(actions.updateAmountSuccess(id, currentAmount));
+  } else {
+    yield put(actions.updateAmountSuccess(id, newAmount));
+  }
+}
+
+export default all([
+  takeLatest('@cart/ADD_REQUEST', addToCart),
+  takeLatest('@cart/UPDATE_REQUEST', updateAmount),
+]);
