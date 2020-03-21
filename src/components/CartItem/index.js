@@ -1,5 +1,6 @@
 import React from 'react';
 import { Image, Text, View } from 'react-native';
+import { connect } from 'react-redux';
 
 import {
   Wrapper,
@@ -16,21 +17,20 @@ import {
   ProductSubTotalBox,
 } from './styles';
 
-export default function CartItem() {
+function CartItem({ product }) {
   return (
     <View>
       <Wrapper>
         <Image
           source={{
-            uri:
-              'https://rocketseat-cdn.s3-sa-east-1.amazonaws.com/modulo-redux/tenis1.jpg',
+            uri: product.image,
           }}
           style={{ width: 105, height: 105, margin: 5 }}
         />
         <Container>
           <ProductTitle>
             <Text numberOfLines={3} style={{ fontSize: 15 }}>
-              Tênis de Caminhada Leve Confortáve de Passeio
+              {product.title}
             </Text>
           </ProductTitle>
           <ProductPrice>
@@ -41,7 +41,7 @@ export default function CartItem() {
                 fontWeight: 'bold',
               }}
             >
-              R$ 179,98
+              {product.priceFormatted}
             </Text>
           </ProductPrice>
         </Container>
@@ -65,3 +65,5 @@ export default function CartItem() {
     </View>
   );
 }
+
+export default connect()(CartItem);
