@@ -7,8 +7,8 @@ import { Container, AddButton, Title, Price } from './styles';
 function HomeItem({ product, dispatch }) {
   function handleAddProduct() {
     dispatch({
-      type: 'ADD_TO_CART',
-      product,
+      type: '@cart/ADD_REQUEST',
+      id: product.id,
     });
   }
 

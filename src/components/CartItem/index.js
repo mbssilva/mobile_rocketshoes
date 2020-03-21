@@ -54,7 +54,7 @@ function CartItem({ product }) {
         <ProductControlButton>
           <MinusButton />
         </ProductControlButton>
-        <ProductAmountBox value="2" />
+        <ProductAmountBox value={String(product.amount)} />
         <ProductControlButton>
           <PlusButton />
         </ProductControlButton>
