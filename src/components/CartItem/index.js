@@ -17,9 +17,12 @@ import {
   ProductSubTotalBox,
 } from './styles';
 
-import { updateAmountRequest } from '../../store/modules/cart/actions';
+import {
+  updateAmountRequest,
+  removeProduct,
+} from '../../store/modules/cart/actions';
 
-function CartItem({ cart, dispatch, productId }) {
+function CartItem({ cart, dispatch, product }) {
   const decreaseNumberOfProducts = () => {
     dispatch(updateAmountRequest(product.id, product.amount - 1));
   };
@@ -28,8 +31,9 @@ function CartItem({ cart, dispatch, productId }) {
     dispatch(updateAmountRequest(product.id, product.amount + 1));
   };
 
-  const cartIndex = cart.findIndex(p => p.id === productId);
-  const product = cart[cartIndex];
+  const deleteProduct = () => {
+    dispatch(removeProduct(product.id));
+  };
 
   return (
     <View>
@@ -58,7 +62,11 @@ function CartItem({ cart, dispatch, productId }) {
             </Text>
           </ProductPrice>
         </Container>
-        <TrashContainer>
+        <TrashContainer
+          onPress={() => {
+            deleteProduct();
+          }}
+        >
           <Trash />
         </TrashContainer>
       </Wrapper>
@@ -79,7 +87,7 @@ function CartItem({ cart, dispatch, productId }) {
           <PlusButton />
         </ProductControlButton>
         <ProductSubTotalBox>
-          <Text style={{ fontWeight: 'bold', fontSize: 20 }}>R$ 174,00</Text>
+          <Text style={{ fontWeight: 'bold', fontSize: 20 }}>{product.subTotal}</Text>
         </ProductSubTotalBox>
       </AmountAndPrice>
     </View>

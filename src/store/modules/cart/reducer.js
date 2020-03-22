@@ -18,6 +18,16 @@ function cart(state = [], action) {
       });
     }
 
+    case actions.removeProduct().type: {
+      let newState = [];
+      for (let i = 0; i < state.length; i += 1) {
+        newState.push(state[i]);
+      }
+      newState = newState.filter(p => p.id !== action.id);
+
+      return newState;
+    }
+
     default:
       return state;
   }

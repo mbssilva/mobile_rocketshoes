@@ -6,23 +6,31 @@ import CartItem from '../../components/CartItem';
 
 import { Container, List } from './styles';
 
+import formatPrice from '../../utils/format';
+
 function Cart({ cart }) {
   Reactotron.warn(cart);
 
   return (
     <Container>
-      {cart.map(product => (
-        <CartItem key={String(product.id)} productId={product.id} />
-      ))}
+      <List
+        data={cart}
+        keyExtractor={item => String(item.id)}
+        renderItem={({ item }) => <CartItem product={item} />}
+      />
     </Container>
+    // <Container>
+    //   {cart.map(product => (
+    //     <CartItem key={String(product.id)} product={product} />
+    //   ))}
+    // </Container>
   );
 }
 
 const mapStateToProps = state => ({
   cart: state.cart.map(product => ({
     ...product,
-    subtotal: product.price * product.amount,
-    // subTotal: formatPrice(product.price * product.amount),
+    subTotal: formatPrice(product.price * product.amount),
   })),
 });
 
