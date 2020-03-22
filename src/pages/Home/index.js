@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../../config/ReactotronConfig';
+import AsyncStorage from '@react-native-community/async-storage';
 
 import api from '../../services/api';
 import formatPrice from '../../utils/format';
@@ -18,14 +18,24 @@ class Home extends Component {
   }
 
   async componentDidMount() {
-    const response = await api.get('/products');
+    try {
+      const response = await api.get('/products');
 
-    const data = response.data.map(product => ({
-      ...product,
-      priceFormatted: formatPrice(product.price),
-    }));
+      const data = response.data.map(product => ({
+        ...product,
+        priceFormatted: formatPrice(product.price),
+      }));
 
-    this.setState({ products: data });
+      await AsyncStorage.setItem('products', JSON.stringify(data));
+
+      this.setState({ products: data });
+    } catch (err) {
+      const data = await AsyncStorage.getItem('products');
+
+      if (data) {
+        this.setState({ products: JSON.parse(data) });
+      }
+    }
   }
 
   render() {

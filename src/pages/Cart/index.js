@@ -64,13 +64,12 @@ const mapStateToProps = state => ({
     ...product,
     subTotal: formatPrice(product.price * product.amount),
   })),
-  total:
-    formatPrice(
-      state.cart.reduce(
-        (total, product) => total + product.price * product.amount,
-        0
-      )
-    ) || 0,
+  total: formatPrice(
+    state.cart.reduce(
+      (total, product) => total + product.price * product.amount,
+      0
+    )
+  ),
 });
 
 export default connect(mapStateToProps)(Cart);
