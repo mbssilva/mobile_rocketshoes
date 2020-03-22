@@ -22,7 +22,7 @@ import {
   removeProduct,
 } from '../../store/modules/cart/actions';
 
-function CartItem({ cart, dispatch, product }) {
+function CartItem({ dispatch, product }) {
   const decreaseNumberOfProducts = () => {
     dispatch(updateAmountRequest(product.id, product.amount - 1));
   };
@@ -94,12 +94,4 @@ function CartItem({ cart, dispatch, product }) {
   );
 }
 
-const mapStateToProps = state => ({
-  cart: state.cart.map(product => ({
-    ...product,
-    subtotal: product.price * product.amount,
-    // subTotal: formatPrice(product.price * product.amount),
-  })),
-});
-
-export default connect(mapStateToProps)(CartItem);
+export default connect()(CartItem);
