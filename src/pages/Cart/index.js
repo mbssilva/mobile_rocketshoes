@@ -1,26 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import Reactotron from 'reactotron-react-native';
 
 import CartItem from '../../components/CartItem';
 
 import { Container, List } from './styles';
 
-// import formatPrice from '../../utils/format';
-
 function Cart({ cart }) {
+  Reactotron.warn(cart);
+
   return (
     <Container>
-      {/* <List
-        data={cart}
-        keyExtractor={item => String(item.id)}
-        renderItem={({ item }) => <CartItem productId={item.id} productAmount={item.amount} />}
-      /> */}
       {cart.map(product => (
-        <CartItem
-          key={String(product.id)}
-          product={product}
-          amount={product.amount}
-        />
+        <CartItem key={String(product.id)} productId={product.id} />
       ))}
     </Container>
   );
@@ -32,12 +24,6 @@ const mapStateToProps = state => ({
     subtotal: product.price * product.amount,
     // subTotal: formatPrice(product.price * product.amount),
   })),
-  // total: formatPrice(
-  //   state.cart.reduce(
-  //     (total, product) => total + product.price * product.amount,
-  //     0
-  //   )
-  // ),
 });
 
 export default connect(mapStateToProps)(Cart);

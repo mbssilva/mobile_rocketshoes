@@ -19,21 +19,17 @@ import {
 
 import { updateAmountRequest } from '../../store/modules/cart/actions';
 
-// import formatPrice from '../../utils/format';
-
-function CartItem({ cart, dispatch, product, amount }) {
-  const productAmount = cart.find(p => p.id === product.id).amount;
-
+function CartItem({ cart, dispatch, productId }) {
   const decreaseNumberOfProducts = () => {
-    dispatch(updateAmountRequest(product.id, productAmount - 1));
+    dispatch(updateAmountRequest(product.id, product.amount - 1));
   };
 
   const increaseNumberOfProducts = () => {
-    dispatch(updateAmountRequest(product.id, productAmount + 1));
+    dispatch(updateAmountRequest(product.id, product.amount + 1));
   };
 
-  // const cartIndex = cart.findIndex(p => p.id === Id);
-  // const product = cart[cartIndex];
+  const cartIndex = cart.findIndex(p => p.id === productId);
+  const product = cart[cartIndex];
 
   return (
     <View>
@@ -74,7 +70,7 @@ function CartItem({ cart, dispatch, product, amount }) {
         >
           <MinusButton />
         </ProductControlButton>
-        <ProductAmountBox value={String(productAmount)} />
+        <ProductAmountBox value={String(product.amount)} />
         <ProductControlButton
           onPress={() => {
             increaseNumberOfProducts();

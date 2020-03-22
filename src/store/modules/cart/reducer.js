@@ -1,3 +1,5 @@
+import produce from 'immer';
+
 import * as actions from './actions';
 
 function cart(state = [], action) {
@@ -6,14 +8,14 @@ function cart(state = [], action) {
       return [...state, action.product];
 
     case actions.updateAmountSuccess().type: {
-      const { id, newAmount } = action;
+      return produce(state, draft => {
+        const productIndex = draft.findIndex(p => p.id === action.id);
 
-      for (let i = 0; i < state.length; i += 1) {
-        // eslint-disable-next-line no-param-reassign
-        if (state[i].id === id) state[i].amount = newAmount;
-      }
-
-      return state;
+        if (productIndex >= 0) {
+          // eslint-disable-next-line no-param-reassign
+          draft[productIndex].amount = Number(action.newAmount);
+        }
+      });
     }
 
     default:
